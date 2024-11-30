@@ -12,16 +12,18 @@ Generally plugin can be installed as follows on a live WordPress site or on deve
 
 1) Clone this repository into existing WP installation path `wp-content/themes/phel-wp-theme`.
 2) Install Composer dependencies with `cd phel-wp-theme && composer install`.
-3) Activate plugin on plugin management page or with `wp theme activate phel-wp-plugin` and open the site to see the theme.
+3) Activate theme `wp theme activate phel-wp-plugin` and open the site at http://localhost:8082/.
+
+All the documentation below here is copied from [Phel WP plugin](https://github.com/jasalt/phel-wp-plugin) README.md and might be off.
 
 ## Development container
 
 For quick and simple local dev installation `docker-compose.yml` file is included which uses [Bitnami WordPress](https://hub.docker.com/r/bitnami/wordpress/) image. This can be especially useful also for providing re-producible bug reports.
 
 ```
-git clone git@github.com:jasalt/phel-wp-plugin.git
-# sudo chmod -R 777 phel-wp-plugin  # probably required on Linux
-cd phel-wp-plugin
+git clone git@github.com:jasalt/phel-wp-theme.git
+# sudo chmod -R 777 phel-wp-theme  # probably required on Linux
+cd phel-wp-theme
 docker compose up  # or podman-compose up
 ```
 
@@ -30,7 +32,7 @@ Following success message, access WP admin via http://localhost:8081/wp-admin wi
 Additionally you can run Phel command line commands, including REPL eg. the following way:
 
 ```
-docker compose exec -w /opt/bitnami/wordpress/wp-content/plugins/phel-wp-plugin wordpress bash
+docker compose exec -w /opt/bitnami/wordpress/wp-content/plugins/phel-wp-theme wordpress bash
 ./vendor/bin/phel --help
 ./vendor/bin/phel --version
 ./vendor/bin/phel repl
@@ -46,12 +48,12 @@ Custom initialization scripts can be added to `docker-post-init-scripts` directo
 
 Container runs Apache web server as non-root user (UID 1001) which cannot write to the mounted volume (this folder) for installing Composer dependencies, writing Phel logs, temp files etc. and may lead to permission errors.
 
-On a single user laptop used for developing `sudo chmod -R 777 phel-wp-plugin` is probably enough, but more narrow permission for the container user UID would be better for security on multi-user system.
+On a single user laptop used for developing `sudo chmod -R 777 phel-wp-theme` is probably enough, but more narrow permission for the container user UID would be better for security on multi-user system.
 
 # REPL usage
 [Phel REPL](https://phel-lang.org/documentation/repl/) starts with `vendor/bin/phel repl` command. Quick way to connect to into running development container:
 ```
-docker compose exec -w /opt/bitnami/wordpress/wp-content/plugins/phel-wp-plugin wordpress vendor/bin/phel repl
+docker compose exec -w /opt/bitnami/wordpress/wp-content/plugins/phel-wp-theme wordpress vendor/bin/phel repl
 ```
 Interfacing with the REPL works mostly as expected, examples:
 ```
@@ -59,7 +61,7 @@ Interfacing with the REPL works mostly as expected, examples:
 (get php/$GLOBALS "wpdb")                  # refer to wpdb for database operations
 
 (require phel\html :refer [html])          # load Phel core libraries
-(require phel-wp-plugin\my-other-ns :as my-other-ns)  # load a Phel source file from src/
+(require phel-wp-theme\my-other-ns :as my-other-ns)  # load a Phel source file from src/
 (use \Laminas\XmlRpc\Client)               # load installed Composer PHP libraries
 ```
 
@@ -73,12 +75,12 @@ However when running `wp-load.php` in Phel REPL the loading of Phel plugin code 
 
 The REPL environment may get messed up with utilities like `use` and `doc` becoming unavailable ([see issue](https://github.com/phel-lang/phel-lang/issues/766)).
 
-To avoid this, some REPL session aware conditional loading in plugin code is required, by eg. patching `phel-wp-plugin.php` to avoid running `Phel::run` during REPL session the following way:
+To avoid this, some REPL session aware conditional loading in plugin code is required, by eg. patching `phel-wp-theme.php` to avoid running `Phel::run` during REPL session the following way:
 
 ```
 // Skip initializing Phel again during REPL session
 if (isset($PHP_SELF) && $PHP_SELF !== "./vendor/bin/phel"){
-	Phel::run($projectRootDir, 'phel-wp-plugin\main');
+	Phel::run($projectRootDir, 'phel-wp-theme\main');
 } else {
 	// This else is for debugging purposes and could be removed
 	print("Running REPL, skip running plugin Phel::run \n");
