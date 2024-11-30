@@ -176,3 +176,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+use Timber\Timber;
+require_once __DIR__ . '/vendor/autoload.php';
+Timber::init();

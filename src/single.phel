@@ -1,0 +1,10 @@
+(ns phel-wp-theme\single
+  (:use \Timber\Timber))
+
+(println "FOOFOFOF")
+
+(def context (php/:: \Timber (context)))
+# (php/var_dump context)
+
+(def post (get context "post"))
+(php/var_dump post)
