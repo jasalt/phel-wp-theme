@@ -1,10 +1,10 @@
 #!/bin/bash
 
-PLUGIN_DIR="/bitnami/phel-wp-plugin"
+THEME_DIR="/bitnami/phel-wp-theme"
 LOCAL_PHEL_LANG="/bitnami/phel-lang"
 VENDOR_PHEL_LANG="vendor/phel-lang"
 
-cd "$PLUGIN_DIR" || { echo "Failed to navigate to $PLUGIN_DIR. Exiting."; exit 1; }
+cd "$THEME_DIR" || { echo "Failed to navigate to $THEME_DIR. Exiting."; exit 1; }
 
 composer install --no-cache
 
@@ -17,4 +17,4 @@ else
   echo "No local phel found, keeping original from composer"
 fi
 
-echo "Phel version: " "$($PLUGIN_DIR/vendor/bin/phel -V)"
+echo "Phel version: " "$($THEME_DIR/vendor/bin/phel -V)"
