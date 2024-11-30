@@ -1,8 +1,6 @@
-Experimental WordPress plugin skeleton made with [Phel](https://phel-lang.org/). Adds admin widget, interfaces a little bit with WordPress database and outputs some html using Phel html library.
+Experimental WordPress theme based on [Phel WP plugin](https://github.com/jasalt/phel-wp-plugin) and [automattic/_s](https://github.com/Automattic/_s/).
 
-![Image of WordPress 6.6.1 Admin Dashboard with this plugin installed](demo.png "WordPress 6.6.1 Admin Dashboard with this plugin installed")
-
-Please note that this project is in experimental state, doesn't come with any warranties and might lead to dangerous security issues if used in production without sufficient care taken.
+Project is in experimental state, doesn't come with any warranties and might lead to dangerous security issues if used in production without sufficient care taken.
 
 # Installation
 
@@ -12,9 +10,9 @@ Phel requires minimum PHP version 8.2 and Composer. Composer is not required if 
 
 Generally plugin can be installed as follows on a live WordPress site or on development server such as [VVV Vagrant](https://varyingvagrantvagrants.org/) or [LocalWP](https://localwp.com/):
 
-1) Clone this repository into existing WP installation path `wp-content/plugins/phel-wp-plugin`.
-2) Install Composer dependencies with `cd phel-wp-plugin && composer install`.
-3) Activate plugin on plugin management page or with `wp plugin activate phel-wp-plugin` and open Admin Dashboard (`/wp-admin`) where this widget should be visible.
+1) Clone this repository into existing WP installation path `wp-content/themes/phel-wp-theme`.
+2) Install Composer dependencies with `cd phel-wp-theme && composer install`.
+3) Activate plugin on plugin management page or with `wp theme activate phel-wp-plugin` and open the site to see the theme.
 
 ## Development container
 
