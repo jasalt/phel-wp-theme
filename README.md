@@ -1,6 +1,10 @@
 Experimental WordPress theme based on [Phel WP plugin](https://github.com/jasalt/phel-wp-plugin) and [automattic/_s](https://github.com/Automattic/_s/).
 
-Project is in experimental state, doesn't come with any warranties and might lead to dangerous security issues if used in production without sufficient care taken.
+Rough idea is to leverage Timber starter project template structure, replace Twig rendering with Phel HTML and continue from there.
+
+Create `.pheml` template files that don't have ns declaration but get read for phel html macro.
+Comparable to EDN in Clojure.
+
 
 # Installation
 
