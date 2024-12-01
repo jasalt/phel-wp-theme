@@ -13,45 +13,23 @@
  */
 
 get_header();
-?>
 
-	<main id="primary" class="site-main">
+if (is_single()) {
+	echo "its single";
+    // Single post logic
+    // You can include a separate file or write the logic here
+} elseif (is_archive()) {
+	echo "its arch";
+    // Archive page logic
+} elseif (is_page()) {
+	echo "its page";
+    // Page logic
+} elseif (is_home() || is_front_page()) {
+	echo "its home";
+    // Home or front page logic
+} else {
+	echo "its 404";
+    // Default or 404 logic
+}
 
-		<?php
-		if ( have_posts() ) :
-
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
-
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
-
-<?php
-get_sidebar();
 get_footer();
