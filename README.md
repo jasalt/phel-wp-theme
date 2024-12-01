@@ -1,8 +1,10 @@
-Experimental WordPress starter theme using [Phel](https://phel-lang.org/) (Lisp). Project forked from [Phel WP plugin](https://github.com/jasalt/phel-wp-plugin) which includes more in depth documentation on using Phel in conjunction with WordPress.
+Proof of concept WordPress starter theme using [Phel](https://phel-lang.org/) (Lisp). Currently only front-page and single article templates with basic layout are implemented.
 
-This branch uses [Timber](https://github.com/timber/timber/tree/2.x) classes for OOP oriented access to data during templating and takes some inspiration from it's [starter-theme](https://github.com/timber/timber/tree/2.x). Phel HTML library is used for rendering however in place of Twig which Timber uses by default.
+![Screenshot_20241201_200200](https://github.com/user-attachments/assets/61832632-ef87-4f6a-b8e6-5e44618fc80a)
 
-Other approaches may be added later as separate branches such as utilising [vanilla WP templating facilities](https://developer.wordpress.org/themes/basics/) more directly.
+This branch uses [Timber](https://github.com/timber/timber/tree/2.x) classes for OOP oriented access to data during templating and takes some inspiration from it's [starter-theme](https://github.com/timber/timber/tree/2.x). Phel HTML library is used for rendering however in place of Twig which Timber uses by default. Other approaches may be added later as separate branches such as utilising [vanilla WP templating facilities](https://developer.wordpress.org/themes/basics/) more directly.
+
+Project forked from [Phel WP plugin](https://github.com/jasalt/phel-wp-plugin) which includes more in depth documentation on using Phel in conjunction with WordPress.
 
 ## Development container
 
