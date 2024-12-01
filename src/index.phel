@@ -10,17 +10,21 @@
 (println "Hello from index.phel <br>")
 
 (cond
+
   (php/is_single)         (println "It's single!")
   (php/is_archive)        (println "It's archive!")
   (php/is_page)           (println "It's page!")
   (or (php/is_home)
       (php/is_front_page) (println "It's home!"))
+
   true (println "It's 404!"))
 
 # TODO 404 route prints "It's home!" also
+#      seems that functions don't return false as expected
 
 
-(php/var_dump context)
+# (php/var_dump context)
+(php/var_dump (get context "posts"))
 
 
 (php/get_footer)
