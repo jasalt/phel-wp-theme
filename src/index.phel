@@ -1,14 +1,15 @@
 (ns phel-wp-theme\index
   (:use \Timber\Timber))
 
-(def context (php/:: \Timber\timber (context)))
+(php/:: Timber (init))
+
+(def context (php/:: Timber (context)))
+
 
 (php/get_header)
 
 (println "<body>")
-
 (println "Hello from index.phel")
-
 
 (cond
   (or (php/is_home)
@@ -18,10 +19,9 @@
   (php/is_archive)         (println "It's archive!")
   true                     (println "It's 404!"))
 
-
-# (php/var_dump context)
-# (php/var_dump (get context "posts"))
-
+(println "<hr>")
+#  (php/var_dump context)
+(php/var_dump (get context "posts"))
 
 (println "</body>")
 
