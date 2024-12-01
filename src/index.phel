@@ -1,4 +1,5 @@
 (ns phel-wp-theme\index
+  (:require phel\html :refer [html])
   (:use \Timber\Timber))
 
 (php/:: Timber (init))
@@ -6,23 +7,36 @@
 (def context (php/:: Timber (context)))
 
 
-(php/get_header)
+(defn footer []
+  [:div
+   [:hr]
+   [:p "Copyright " (php/time)]])
 
-(println "<body>")
-(println "Hello from index.phel")
+
+# TODO language_attributes() returns string lang="en-US"
+
+(defn base-layout [content]
+  [:html (php/language_attributes)
+   [:head (php/wp_head)]
+   [:body content]
+   (footer)
+   ])
+
+(defn render-home []
+  (println
+   (html
+   (base-layout
+   [:div
+    [:h1 "Home"]
+    [:p "Nothing much to see"]]))))
+
+# (php/var_dump context)
+# (php/var_dump (get context "posts"))
 
 (cond
   (or (php/is_home)
-      (php/is_front_page)) (println "It's home!")
+      (php/is_front_page)) (render-home)
   (php/is_single)          (println "It's single!")
   (php/is_page)            (println "It's page!")
   (php/is_archive)         (println "It's archive!")
   true                     (println "It's 404!"))
-
-(println "<hr>")
-#  (php/var_dump context)
-(php/var_dump (get context "posts"))
-
-(println "</body>")
-
-(php/get_footer)
