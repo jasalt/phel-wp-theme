@@ -16,7 +16,8 @@
   ],
   "require": {
     "php": ">=8.2",
-    "phel-lang/phel-lang": "dev-main"
+    "phel-lang/phel-lang": "dev-main",
+    "timber/timber": "2.x-dev"
   },
   "minimum-stability": "dev",
   "config": {
