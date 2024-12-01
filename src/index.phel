@@ -12,11 +12,9 @@
    [:hr]
    [:p "Copyright " (php/time)]])
 
-
-# TODO language_attributes() returns string lang="en-US"
-
 (defn base-layout [content]
-  [:html (php/language_attributes)
+  [:html (when (= (php/get_option "html_type") "text/html")
+           {:lang (php/get_bloginfo "language")})
    [:head (php/wp_head)]
    [:body content]
    (footer)
@@ -28,7 +26,8 @@
    (base-layout
    [:div
     [:h1 "Home"]
-    [:p "Nothing much to see"]]))))
+    [:p "Nothing much to see"]
+    ]))))
 
 # (php/var_dump context)
 # (php/var_dump (get context "posts"))
