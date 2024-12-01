@@ -7,11 +7,6 @@
  * @package phel-wp-theme
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
-}
-
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -26,7 +21,7 @@ function phel_wp_theme_setup() {
 		* If you're building a theme based on phel-wp-theme, use a find and replace
 		* to change 'phel-wp-theme' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'phel-wp-theme', get_template_directory() . '/languages' );
+	//load_theme_textdomain( 'phel-wp-theme', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -102,17 +97,6 @@ function phel_wp_theme_setup() {
 }
 add_action( 'after_setup_theme', 'phel_wp_theme_setup' );
 
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function phel_wp_theme_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'phel_wp_theme_content_width', 640 );
-}
-add_action( 'after_setup_theme', 'phel_wp_theme_content_width', 0 );
 
 /**
  * Register widget area.
@@ -134,48 +118,22 @@ function phel_wp_theme_widgets_init() {
 }
 add_action( 'widgets_init', 'phel_wp_theme_widgets_init' );
 
-/**
- * Enqueue scripts and styles.
- */
-function phel_wp_theme_scripts() {
-	wp_enqueue_style( 'phel-wp-theme-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'phel-wp-theme-style', 'rtl', 'replace' );
+// /**
+//  * Enqueue scripts and styles.
+//  */
+// function phel_wp_theme_scripts() {
+// 	wp_enqueue_style( 'phel-wp-theme-style', get_stylesheet_uri(), array(), _S_VERSION );
+// 	wp_style_add_data( 'phel-wp-theme-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'phel-wp-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+// 	wp_enqueue_script( 'phel-wp-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'phel_wp_theme_scripts' );
+// 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+// 		wp_enqueue_script( 'comment-reply' );
+// 	}
+// }
+// add_action( 'wp_enqueue_scripts', 'phel_wp_theme_scripts' );
 
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
 
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
-
-use Timber\Timber;
-require_once __DIR__ . '/vendor/autoload.php';
-Timber::init();
+// use Timber\Timber;
+// require_once __DIR__ . '/vendor/autoload.php';
+// Timber::init();
