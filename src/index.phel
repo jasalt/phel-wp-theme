@@ -30,14 +30,14 @@
     [:ul
 
      # TODO why following fails with CompiledCodeIsMalformedException:
-     #      [:li [:a {:href "http://localhost:8082/2024/11/30/hello-world/"} Hello world!]] is not a valid element name
+     #      [:li [:a {:href "http://localhost:8082/2024/11/30/hello-world/"} "Hello world!"]] is not a valid element name
 
-     # (for [p :in (get context "posts")] [:li [:a {:href (php/-> p link)} p]])  # Failing
+     # (for [p :in (get context "posts")] [:li [:a {:href (php/-> p link)} (str p)]])  # Failing
 
      # .. while this is OK:
 
      (let [p (first (get context "posts"))]
-       [:li [:a {:href (php/-> p link)} p]])
+       [:li [:a {:href (php/-> p link)} (str p)]])
      ]]))))
 
 (defn render-single []
