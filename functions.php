@@ -137,3 +137,5 @@ add_action( 'widgets_init', 'phel_wp_theme_widgets_init' );
 // use Timber\Timber;
 // require_once __DIR__ . '/vendor/autoload.php';
 // Timber::init();
+
+add_theme_support('admin-bar');

@@ -3,19 +3,24 @@
 
 (def context (php/:: \Timber\timber (context)))
 
-
 (php/get_header)
 
+(println "<body>")
 
-(println "Hello from index.phel <br>")
+(println "Hello from index.phel")
+
+(php/var_dump (php/is_home))
+(php/var_dump (php/is_front_page))
+(php/var_dump (php/is_archive))
+
 
 (cond
-
   (php/is_single)         (println "It's single!")
   (php/is_archive)        (println "It's archive!")
   (php/is_page)           (println "It's page!")
   (or (php/is_home)
-      (php/is_front_page) (println "It's home!"))
+      (php/is_front_page) (println "It's home!")
+      )
 
   true (println "It's 404!"))
 
@@ -24,7 +29,9 @@
 
 
 # (php/var_dump context)
-(php/var_dump (get context "posts"))
+# (php/var_dump (get context "posts"))
 
+
+(println "</body>")
 
 (php/get_footer)
