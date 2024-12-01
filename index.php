@@ -12,24 +12,35 @@
  * @package phel-wp-theme
  */
 
+use Phel\Phel;
+
+$projectRootDir = __DIR__ . '/';
+require $projectRootDir . 'vendor/autoload.php';
+
+
 get_header();
 
+
 if (is_single()) {
-	echo "its single";
     // Single post logic
+	// http://localhost:8082/2024/11/30/hello-world/
+	echo "its single";
+
     // You can include a separate file or write the logic here
 } elseif (is_archive()) {
-	echo "its arch";
     // Archive page logic
+	echo "its arch";
 } elseif (is_page()) {
-	echo "its page";
     // Page logic
+	echo "its page";
 } elseif (is_home() || is_front_page()) {
-	echo "its home";
     // Home or front page logic
+	// echo "its index";
+	Phel::run($projectRootDir, 'phel-wp-theme\index');
+
 } else {
-	echo "its 404";
     // Default or 404 logic
+	echo "its 404";
 }
 
 get_footer();

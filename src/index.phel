@@ -1,0 +1,3 @@
+(ns phel-wp-theme\index)
+
+(println "Phel: It's index")
