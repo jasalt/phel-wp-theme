@@ -17,30 +17,32 @@ use Phel\Phel;
 $projectRootDir = __DIR__ . '/';
 require $projectRootDir . 'vendor/autoload.php';
 
+Phel::run($projectRootDir, 'phel-wp-theme\index');
 
-get_header();
+
+// get_header();
 
 
-if (is_single()) {
-    // Single post logic
-	// http://localhost:8082/2024/11/30/hello-world/
-	echo "its single";
+// if (is_single()) {
+//     // Single post logic
+// 	// http://localhost:8082/2024/11/30/hello-world/
+// 	echo "its single";
 
-    // You can include a separate file or write the logic here
-} elseif (is_archive()) {
-    // Archive page logic
-	echo "its arch";
-} elseif (is_page()) {
-    // Page logic
-	echo "its page";
-} elseif (is_home() || is_front_page()) {
-    // Home or front page logic
-	// echo "its index";
-	Phel::run($projectRootDir, 'phel-wp-theme\index');
+//     // You can include a separate file or write the logic here
+// } elseif (is_archive()) {
+//     // Archive page logic
+// 	echo "its arch";
+// } elseif (is_page()) {
+//     // Page logic
+// 	echo "its page";
+// } elseif (is_home() || is_front_page()) {
+//     // Home or front page logic
+// 	// echo "its index";
 
-} else {
-    // Default or 404 logic
-	echo "its 404";
-}
 
-get_footer();
+// } else {
+//     // Default or 404 logic
+// 	echo "its 404";
+// }
+
+// get_footer();

@@ -1,3 +1,7 @@
 (ns phel-wp-theme\index)
 
+(php/get_header)
+
 (println "Phel: It's index")
+
+(php/get_footer)
