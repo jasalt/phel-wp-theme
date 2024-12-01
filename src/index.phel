@@ -29,14 +29,16 @@
     [:h2 "Your posts:"]
     [:ul
 
-     # TODO why following fails with CompiledCodeIsMalformedException: [:li "Hello world!"] is not a valid element name
-     # (for [p :in (get context "posts")] [:li (str p)])
+     # TODO why following fails with CompiledCodeIsMalformedException:
+     #      [:li [:a {:href "http://localhost:8082/2024/11/30/hello-world/"} Hello world!]] is not a valid element name
+
+     # (for [p :in (get context "posts")] [:li [:a {:href (php/-> p link)} p]])  # Failing
 
      # .. while this is OK:
-     [:li [:a {:href (php/-> (first (get context "posts")) link)}
-           (first (get context "posts"))]]
-     ]
-    ]))))
+
+     (let [p (first (get context "posts"))]
+       [:li [:a {:href (php/-> p link)} p]])
+     ]]))))
 
 (defn render-single []
   (let [post (get context "post")]
