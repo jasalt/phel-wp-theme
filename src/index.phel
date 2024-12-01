@@ -26,11 +26,21 @@
    (base-layout
    [:div
     [:h1 "Home"]
-    [:p "Nothing much to see"]
+    [:h2 "Your posts:"]
+    [:ul
+
+     # TODO why following fails with CompiledCodeIsMalformedException: [:li "Hello world!"] is not a valid element name
+     # (for [p :in (get context "posts")] [:li (str p)])
+
+     # .. while this is OK:
+     [:li [:a {:href (php/-> (first (get context "posts")) link)}
+           (first (get context "posts"))]]
+     ]
     ]))))
 
 # (php/var_dump context)
-# (php/var_dump (get context "posts"))
+# (php/var_dump (count (get context "posts")))
+# (php/var_dump (first (get context "posts")))
 
 (cond
   (or (php/is_home)
