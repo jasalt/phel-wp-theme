@@ -13,10 +13,12 @@
  */
 
 use Phel\Phel;
+use Timber\Timber;
 
 $projectRootDir = __DIR__ . '/';
 require $projectRootDir . 'vendor/autoload.php';
 
+Timber::init();
 Phel::run($projectRootDir, 'phel-wp-theme\index');
 
 

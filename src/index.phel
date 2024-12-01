@@ -1,8 +1,11 @@
 (ns phel-wp-theme\index
-  # (:use \Timber\Timber)
-  )
+  (:use \Timber\Timber))
+
+(def context (php/:: \Timber\timber (context)))
+
 
 (php/get_header)
+
 
 (println "Hello from index.phel <br>")
 
@@ -14,11 +17,10 @@
       (php/is_front_page) (println "It's home!"))
   true (println "It's 404!"))
 
-# TODO 404 prints "It's home!" also
+# TODO 404 route prints "It's home!" also
 
 
-# (def context (php/:: \Timber (context)))
-# (php/var_dump context)
-#
+(php/var_dump context)
+
 
 (php/get_footer)
