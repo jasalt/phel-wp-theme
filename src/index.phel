@@ -2,6 +2,16 @@
 
 (php/get_header)
 
-(println "Phel: It's index")
+(println "Hello from index.phel <br>")
+
+(cond
+  (php/is_single)         (println "It's single!")
+  (php/is_archive)        (println "It's archive!")
+  (php/is_page)           (println "It's page!")
+  (or (php/is_home)
+      (php/is_front_page) (println "It's home!"))
+  true (println "It's 404!"))
+
+# TODO 404 prints "It's home!" also
 
 (php/get_footer)
