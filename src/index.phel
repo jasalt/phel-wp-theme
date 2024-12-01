@@ -1,4 +1,6 @@
-(ns phel-wp-theme\index)
+(ns phel-wp-theme\index
+  # (:use \Timber\Timber)
+  )
 
 (php/get_header)
 
@@ -13,5 +15,10 @@
   true (println "It's 404!"))
 
 # TODO 404 prints "It's home!" also
+
+
+# (def context (php/:: \Timber (context)))
+# (php/var_dump context)
+#
 
 (php/get_footer)
