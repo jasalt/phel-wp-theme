@@ -7,4 +7,5 @@
 
 	<?php wp_head(); ?>
 </head>
-<!-- dummy header.php file to avoid deprecation warning about it missing -->
+<!-- TODO create layout with phel/html -->
+<!-- Dummy header.php file to avoid deprecation warning about it missing. -->
