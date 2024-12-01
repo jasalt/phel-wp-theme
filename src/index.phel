@@ -38,6 +38,17 @@
      ]
     ]))))
 
+(defn render-single []
+  (let [post (get context "post")]
+    (println
+     (html
+      (base-layout
+       [:div
+        [:a {:href "/"} "Go back home"]
+        [:h2 (php/-> post title)]
+        [:p (php/-> post content)]
+        ])))))
+
 # (php/var_dump context)
 # (php/var_dump (count (get context "posts")))
 # (php/var_dump (first (get context "posts")))
@@ -45,7 +56,7 @@
 (cond
   (or (php/is_home)
       (php/is_front_page)) (render-home)
-  (php/is_single)          (println "It's single!")
+  (php/is_single)          (render-single)
   (php/is_page)            (println "It's page!")
   (php/is_archive)         (println "It's archive!")
   true                     (println "It's 404!"))
